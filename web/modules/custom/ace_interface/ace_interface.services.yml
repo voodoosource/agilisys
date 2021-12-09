@@ -1,0 +1,56 @@
+services:
+  ace_interface.guzzleclient:
+    class: Drupal\ace_interface\http\AceGuzzleClient
+    arguments: ['@config.factory']
+
+  ace_interface.oauthclient:
+    class: Drupal\ace_interface\http\AceOAuthClient
+    arguments: ['@config.factory', '@cache.default']
+
+  ace_interface.fileclient:
+    class: Drupal\ace_interface\http\AceFileClient
+    arguments: ['@config.factory', '@ace_token.token_manager']
+
+  ace_interface.transportclient:
+    class: Drupal\ace_interface\http\AceTransportClient
+    arguments: ['@config.factory','@ace_interface.oauthclient','@ace_interface.guzzleclient', '@ace_interface.curlclient', '@ace_token.token_manager']
+
+  ace_interface.curlclient:
+    class: Drupal\ace_interface\http\AceCurlClient
+    arguments: ['@config.factory']
+
+  ace_interface.odataclient:
+    class: Drupal\ace_interface\odata\AceODataClient
+    arguments: ['@config.factory','@ace_interface.transportclient']
+
+  ace_interface.odata:
+    class: Drupal\ace_interface\odata\AceOData
+    arguments: ['@config.factory','@ace_interface.odataclient']
+
+  ace_interface.ace_consent:
+    class: Drupal\ace_interface\form\AceConsent
+    arguments: ['@config.factory','@ace_interface.odata','@tempstore.shared']
+
+  ace_interface.ace_submission:
+    class: Drupal\ace_interface\form\AceSubmission
+    arguments: ['@config.factory','@ace_interface.submissionframework','@tempstore.shared', '@tempstore.private']
+
+  ace_interface.ace_file:
+    class: Drupal\ace_interface\form\AceFile
+    arguments: ['@config.factory','@ace_interface.fileclient','@tempstore.shared']
+
+  ace_interface.ace_multiform:
+    class: Drupal\ace_interface\form\AceMultiform
+    arguments: ['@config.factory','@tempstore.shared']
+
+  ace_interface.submissionframework:
+    class: Drupal\ace_interface\submission_framework\AceSubmissionFramework
+    arguments: ['@config.factory','@ace_interface.odata']
+
+  ace_interface.submission_framework_submissions:
+    class: Drupal\ace_interface\submission_framework\AceSubmissionFrameworkSubmissions
+    arguments: ['@config.factory', '@ace_interface.submissionframework', '@tempstore.private', '@logger.factory']
+
+  ace_token.token_manager:
+    class: Drupal\ace_interface\http\TokenManager
+    arguments: ['@settings', '@cache.default']

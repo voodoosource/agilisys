@@ -1,0 +1,54 @@
+# Schema for the configuration files of the ace_interface module.
+
+ace_interface.settings:
+  type: config_object
+  label: 'Submission framework settings'
+  mapping:
+    trace:
+      type: string
+      label: 'Trace'
+    debug:
+      type: string
+      label: 'Debug'
+    submission_method:
+      type: string
+      label: 'Submission method'
+    secure_connection:
+      type: boolean
+      label: 'Use secure connection'
+    disable_ssl_verify:
+      type: boolean
+      label: 'Do not verify SSL when using secure connection (emergencies only)'
+    soip_constant_name:
+      type: string
+      label: 'SOIP constant'
+    file_secure_connection:
+      type: boolean
+      label: 'Secure connection for files'
+    ftp_root_path:
+      type: string
+      label: 'FTP root path'
+    client_id:
+      type: string
+      label: 'Client ID'
+    client_secret:
+      type: string
+      label: 'Client secret'
+    redirect_uri:
+      type: string
+      label: 'Redirect URI'
+    state:
+      type: string
+      label: 'State'
+    authorize_endpoint:
+      type: string
+      label: 'Authorize endpoint'
+    host:
+      type: string
+      label: 'Host'
+    test_response_body:
+      type: string
+      label: 'Test response body'
+    decoding_key:
+      type: string
+      label: 'Decoding key'
