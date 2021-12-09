@@ -1,0 +1,23 @@
+admin.interface:
+  title: 'Interface'
+  parent: system.admin
+  route_name: ace_interface.admin_interface
+  weight: 8
+  id: admin.interface
+
+
+interface.config:
+  title: 'Interface configuration'
+  parent: admin.interface
+  url: internal:/admin/config/interface
+  description: 'Configure general interface settings including toggling tracing the guzzle connection'
+  weight: 0
+  id: interface.config
+
+interface.guzzle:
+  title: 'Guzzle trace'
+  parent: admin.interface
+  url: internal:/admin/guzzle-trace
+  description: 'Guzzle connection debug log of HTTP requests made though AceGuzzleClient'
+  weight: 12
+  id: interface.guzzle

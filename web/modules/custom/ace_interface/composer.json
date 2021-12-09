@@ -1,0 +1,12 @@
+{
+  "name": "agilisys/ace_interface",
+  "description": "Ace interface package",
+  "type": "drupal-custom-module",
+  "authors": [
+    {
+      "name": "Agilisys"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {}
+}
